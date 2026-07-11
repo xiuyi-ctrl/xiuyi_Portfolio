@@ -53,17 +53,17 @@ function Hero() {
             {lang === "en" ? "Open for opportunities" : "开放合作"}
           </span>
         </div>
-        <h1 className="text-7xl md:text-8xl lg:text-[9rem] font-bold leading-[0.9] tracking-tight mt-12">
+        <h1 className="text-6xl md:text-7xl lg:text-[8rem] font-bold leading-[1.1] tracking-tight mt-16">
           <span className="text-white/90">{t.hero.greeting}</span>
           <br />
           <span className="bg-gradient-to-r from-white via-white/80 to-white/40 bg-clip-text text-transparent">
             {t.hero.highlight}
           </span>
         </h1>
-        <p className="mt-8 text-lg text-white/40 max-w-2xl mx-auto leading-relaxed tracking-wide">
+        <p className="mt-6 text-base text-white/40 max-w-xl mx-auto leading-relaxed tracking-wide">
           {t.hero.subtitle}
         </p>
-        <div className="mt-12 flex items-center justify-center gap-6">
+        <div className="mt-10 flex items-center justify-center gap-6">
           <a
             href="#contact"
             className="px-8 py-3 bg-white text-black text-sm font-medium hover:bg-white/90 transition-all duration-300 tracking-wide"
@@ -72,9 +72,9 @@ function Hero() {
           </a>
           <a
             href="#projects"
-            className="border border-white/20 text-white/70 hover:border-white/50 transition-all duration-300 text-sm tracking-wide"
+            className="px-8 py-3 border border-white/20 text-white/70 hover:border-white/50 transition-all duration-300 text-sm tracking-wide"
           >
-            View Work
+            {lang === "en" ? "View Projects" : "查看项目"}
           </a>
         </div>
       </div>

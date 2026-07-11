@@ -2,7 +2,7 @@ import { projects } from "../data/projects";
 import { useLanguage } from "../i18n/LanguageContext";
 
 function Projects() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
     <section id="projects" className="py-32">
@@ -23,14 +23,16 @@ function Projects() {
               className="group relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center border-t border-white/[0.04] pt-12"
             >
               <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                <div className="aspect-[16/10] overflow-hidden bg-white/[0.02] border border-white/[0.06]">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  <div className="aspect-[16/10] bg-white/[0.02] border border-white/[0.06] flex items-center justify-center p-4">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-contain transition-all duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                </a>
               </div>
               <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                 <span className="text-[10px] text-white/20 tracking-[0.3em] uppercase">
@@ -38,7 +40,7 @@ function Projects() {
                 </span>
                 <h3 className="text-2xl font-bold text-white/90 mt-2">{project.title}</h3>
                 <p className="text-sm text-white/40 mt-4 leading-relaxed">
-                  {project.description}
+                  {lang === "en" ? project.description : project.descriptionZh}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-6">
                   {project.tags.map((tag) => (
@@ -50,6 +52,16 @@ function Projects() {
                     </span>
                   ))}
                 </div>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-6 text-sm text-white/50 hover:text-white transition-colors tracking-wide"
+                  >
+                    {lang === "en" ? "View Project →" : "查看项目 →"}
+                  </a>
+                )}
               </div>
             </div>
           ))}

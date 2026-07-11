@@ -31,28 +31,12 @@ function Contact() {
               {t.contact.emailLabel}
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/xiuyi-ctrl"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 border border-white/20 text-white/70 hover:border-white/50 transition-all duration-300 text-sm tracking-wide"
             >
               {t.contact.github}
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 border border-white/20 text-white/70 hover:border-white/50 transition-all duration-300 text-sm tracking-wide"
-            >
-              {t.contact.twitter}
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 border border-white/20 text-white/70 hover:border-white/50 transition-all duration-300 text-sm tracking-wide"
-            >
-              {t.contact.linkedin}
             </a>
           </div>
         </div>
