@@ -1,5 +1,6 @@
 import { useLanguage } from "../i18n/LanguageContext";
 import Hyperspeed from "./Hyperspeed";
+import ShinyText from "./ShinyText";
 
 const hyperspeedOptions: any = {
   distortion: "turbulentDistortion",
@@ -53,8 +54,16 @@ function Hero() {
             {lang === "en" ? "Open for opportunities" : "开放合作"}
           </span>
         </div>
-        <h1 className="text-6xl md:text-7xl lg:text-[8rem] font-bold leading-[1.1] tracking-tight mt-16">
-          <span className="text-white/90">{t.hero.greeting}</span>
+        <h1 className="text-5xl md:text-6xl lg:text-[7rem] font-bold leading-[1.1] tracking-tight mt-16">
+          <ShinyText 
+            className="text-white/90"
+            speed={3}
+            color="#ffffff"
+            shineColor="#c084fc"
+            spread={120}
+          >
+            {t.hero.greeting}
+          </ShinyText>
           <br />
           <span className="bg-gradient-to-r from-white via-white/80 to-white/40 bg-clip-text text-transparent">
             {t.hero.highlight}

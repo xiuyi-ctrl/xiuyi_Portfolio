@@ -97,13 +97,13 @@ export const translations = {
       stats: [
         { value: "3+", label: "已完成项目" },
         { value: "1年+", label: "学习时长" },
-        { value: "", label: "创意想法" },
+        { value: "∞", label: "创意想法" },
         { value: "100%", label: "学习热情" },
       ],
     },
     projects: {
       title: "精选项目",
-      subtitle: "使用 AI 辅助开发的作品集。",
+      subtitle: "使用 AI 辅助开发的作品集",
     },
     strengths: {
       title: "核心优势",
