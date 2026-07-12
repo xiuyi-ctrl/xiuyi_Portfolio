@@ -73,9 +73,8 @@ function Hero() {
           <RotatingText
             texts={rotatingTexts}
             mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300/20 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg border border-cyan-400/30"
-            splitBy="words"
-            transition={{ type: "spring", damping: 30, stiffness: 400 }}
             rotationInterval={2000}
+            transition={{ type: "spring", damping: 30, stiffness: 400 }}
           />
         </h1>
         <p className="mt-6 text-base text-white/40 max-w-xl mx-auto leading-relaxed tracking-wide">
