@@ -74,25 +74,31 @@ const fragment = /* glsl */ `
     vec2 center = vec2(0.5);
     float d = length(uv - center);
     
-    // Core glow - bright center
-    float core = smoothstep(0.35, 0.0, d);
+    // Core - very bright center
+    float core = smoothstep(0.25, 0.0, d) * 1.2;
+    
+    // Inner glow
+    float inner = smoothstep(0.4, 0.2, d) * 0.8;
     
     // Outer glow/halo
-    float halo = smoothstep(0.5, 0.35, d) * 0.6;
+    float halo = smoothstep(0.5, 0.35, d) * 0.5;
     
-    // Outer edge fade
+    // Outer edge
     float edge = smoothstep(0.5, 0.48, d);
     
-    float alpha = (core + halo) * edge;
+    float alpha = (core + inner + halo) * edge;
     
-    // Pulsing glow intensity
-    float pulse = 0.8 + 0.2 * sin(uTime * 2.0 + vRandom.x * 6.28);
-    alpha *= pulse;
+    // Pulsing brightness
+    float pulse = 0.7 + 0.3 * sin(uTime * 1.5 + vRandom.x * 6.28);
+    alpha *= (0.8 + 0.2 * sin(uTime * 2.0 + vRandom.x * 6.28));
     
     // Color with subtle animation
-    vec3 finalColor = vColor + 0.15 * sin(uv.yxx + uTime * 1.5 + vRandom.y * 6.28);
+    vec3 finalColor = vColor * (1.0 + core * 0.8) + vec3(0.1) * core;
     
-    gl_FragColor = vec4(finalColor * (1.0 + core * 0.5), alpha);
+    // Add subtle color shift animation
+    finalColor += 0.1 * sin(uv.yxx + uTime * 1.2 + vRandom.y * 6.28) * core;
+    
+    gl_FragColor = vec4(finalColor, alpha * 1.2);
   }
 `;
 
@@ -113,16 +119,16 @@ interface ParticlesProps {
 }
 
 const Particles = ({
-  particleCount = 160,
-  particleSpread = 14,
-  speed = 0.12,
-  particleColors = ['#c084fc', '#f472b6', '#38bdf8'],
+  particleCount = 200,
+  particleSpread = 16,
+  speed = 0.15,
+  particleColors = ['#c084fc', '#f472b6', '#38bdf8', '#ffffff', '#a855f7', '#ec4899', '#0ea5e9'],
   moveParticlesOnHover = true,
-  particleHoverFactor = 1.2,
-  alphaParticles = false,
-  particleBaseSize = 80,
-  sizeRandomness = 1.2,
-  cameraDistance = 18,
+  particleHoverFactor = 1.5,
+  alphaParticles = true,
+  particleBaseSize = 120,
+  sizeRandomness = 1,
+  cameraDistance = 20,
   disableRotation = false,
   pixelRatio = 1,
   className = '',
@@ -143,7 +149,7 @@ const Particles = ({
     container.appendChild(gl.canvas);
     gl.clearColor(0, 0, 0, 0);
 
-    const camera = new Camera(gl, { fov: 18 });
+    const camera = new Camera(gl, { fov: 25 });
     camera.position.set(0, 0, cameraDistance);
 
     const resize = () => {
@@ -230,9 +236,9 @@ const Particles = ({
       }
 
       if (!disableRotation) {
-        particles.rotation.x = Math.sin(elapsed * 0.0002) * 0.1;
-        particles.rotation.y = Math.cos(elapsed * 0.0005) * 0.15;
-        particles.rotation.z += 0.01 * speed;
+        particles.rotation.x = Math.sin(elapsed * 0.0002) * 0.15;
+        particles.rotation.y = Math.cos(elapsed * 0.0005) * 0.2;
+        particles.rotation.z += 0.015 * speed;
       }
 
       renderer.render({ scene: particles, camera });
