@@ -1,10 +1,20 @@
 import { useLanguage } from "../i18n/LanguageContext";
+import Particles from "./Particles";
 
 function Contact() {
   const { t } = useLanguage();
 
   return (
     <section id="contact" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <Particles
+        particleCount={100}
+        particleSpread={15}
+        speed={0.06}
+        particleColors={['#c084fc', '#f472b6', '#38bdf8']}
+        particleBaseSize={30}
+        sizeRandomness={0.6}
+        cameraDistance={25}
+      />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(120,80,255,0.06)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-[1700px] mx-auto px-8 w-full">

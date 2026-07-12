@@ -1,12 +1,14 @@
 import { projects } from "../data/projects";
 import { useLanguage } from "../i18n/LanguageContext";
+import Particles from "./Particles";
 
 function Projects() {
   const { t } = useLanguage();
 
   return (
-    <section id="projects" className="py-32">
-      <div className="max-w-[1700px] mx-auto px-8">
+    <section id="projects" className="py-32 relative">
+      <Particles particleCount={40} particleSpread={6} speed={0.04} particleColors={['#38bdf8', '#c084fc']} particleBaseSize={20} sizeRandomness={0.4} cameraDistance={12} />
+      <div className="max-w-[1700px] mx-auto px-8 relative z-10">
         <div className="text-center mb-20">
           <span className="text-xs text-white/30 tracking-[0.3em] uppercase">
             {t.projects.title}
