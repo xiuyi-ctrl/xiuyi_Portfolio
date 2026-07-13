@@ -82,12 +82,15 @@ function Contact() {
 
           <div className="flex flex-col items-center gap-6 mt-12">
             <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href={`mailto:${t.contact.email}`}
-                className="px-8 py-3 bg-white text-black text-sm font-medium hover:bg-white/90 transition-all duration-300 tracking-wide"
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText('2998526825@qq.com');
+                  showCopiedToast();
+                }}
+                className="px-8 py-3 bg-white text-black text-sm font-medium hover:bg-white/90 transition-all duration-300 tracking-wide cursor-pointer"
               >
                 {t.contact.emailLabel}
-              </a>
+              </button>
               <a
                 href="https://github.com/xiuyi-ctrl"
                 target="_blank"
